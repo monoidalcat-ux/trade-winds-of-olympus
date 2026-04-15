@@ -1,0 +1,7 @@
+{
+  "goods": [
+    {"id": "olive_oil", "name": "Olive Oil"},
+    {"id": "wine", "name": "Wine"},
+    {"id": "pottery", "name": "Pottery"}
+  ]
+}

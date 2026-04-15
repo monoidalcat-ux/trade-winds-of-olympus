@@ -1,0 +1,31 @@
+{
+  "cities": {
+    "athens": {
+      "name": "Athens",
+      "routes": ["corinth", "sparta"],
+      "prices": {
+        "olive_oil": 10,
+        "wine": 14,
+        "pottery": 18
+      }
+    },
+    "corinth": {
+      "name": "Corinth",
+      "routes": ["athens", "sparta"],
+      "prices": {
+        "olive_oil": 15,
+        "wine": 10,
+        "pottery": 20
+      }
+    },
+    "sparta": {
+      "name": "Sparta",
+      "routes": ["athens", "corinth"],
+      "prices": {
+        "olive_oil": 8,
+        "wine": 16,
+        "pottery": 25
+      }
+    }
+  }
+}
