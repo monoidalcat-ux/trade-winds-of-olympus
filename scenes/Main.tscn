@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://1vh8monc3qkc"]
+
+[ext_resource type="Script" uid="uid://ddehcfnrrv0j0" path="res://scenes/Main.gd" id="1_elqb8"]
+
+[node name="Main" type="Node2D" unique_id=559429081]
+
+[node name="Control" type="Control" parent="." unique_id=250299054]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 85.0
+offset_top = 152.0
+offset_right = 447.0
+offset_bottom = 390.0
+script = ExtResource("1_elqb8")
+
+[node name="CityLabel" type="Label" parent="Control" unique_id=392248283]
+layout_mode = 0
+offset_top = -132.0
+offset_right = 362.0
+offset_bottom = -109.0
+text = "Athens"
+
+[node name="MoneyLabel" type="Label" parent="Control" unique_id=1288948681]
+layout_mode = 0
+offset_top = 335.0
+offset_right = 362.0
+offset_bottom = 358.0
+text = "100"
+
+[node name="CargoLabel" type="Label" parent="Control" unique_id=1745115648]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 296.0
+offset_right = 358.0
+offset_bottom = 319.0
+text = "Empty"
+
+[node name="BuyButton" type="Button" parent="Control" unique_id=1074375178]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 134.0
+offset_right = 358.0
+offset_bottom = 165.0
+text = "Buy"
+
+[node name="TravelButton" type="Button" parent="Control" unique_id=1137812456]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 183.0
+offset_right = 358.0
+offset_bottom = 214.0
+text = "Travel"
+
+[node name="SellButton" type="Button" parent="Control" unique_id=1545691111]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 238.0
+offset_right = 358.0
+offset_bottom = 269.0
+text = "Sell"
+
+[node name="LogLabel" type="RichTextLabel" parent="Control" unique_id=221163415]
+layout_mode = 0
+offset_top = 117.0
+offset_right = 362.0
+offset_bottom = 117.0
+
+[node name="PricesLabel" type="Label" parent="Control" unique_id=1881055934]
+layout_mode = 0
+offset_top = -99.0
+offset_right = 68.0
+offset_bottom = -76.0
+text = "Prices: ..."
+
+[node name="DestinationDropdown" type="OptionButton" parent="Control" unique_id=2090873768]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.08800001
+anchor_bottom = 0.08400001
+offset_right = 68.144
+offset_bottom = 19.008
+
+[node name="GoodsDropdown" type="OptionButton" parent="Control" unique_id=1056792082]
+layout_mode = 0
+offset_left = 220.0
+offset_right = 311.0
+offset_bottom = 39.0
+
+[connection signal="pressed" from="Control/BuyButton" to="Control" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Control/TravelButton" to="Control" method="_on_travel_button_pressed"]
+[connection signal="pressed" from="Control/SellButton" to="Control" method="_on_sell_button_pressed"]
+[connection signal="ready" from="Control/DestinationDropdown" to="Control" method="_on_destination_dropdown_ready"]
+[connection signal="ready" from="Control/GoodsDropdown" to="Control" method="_on_goods_dropdown_ready"]
