@@ -1,0 +1,10 @@
+{
+  "events": [
+    {
+      "id": "calm_seas",
+      "title": "Calm Seas",
+      "description": "The voyage was uneventful and quick.",
+      "type": "travel"
+    }
+  ]
+}
