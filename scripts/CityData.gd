@@ -8,7 +8,7 @@ var cities: Dictionary = {}
 var goods: Array[Dictionary] = []
 
 func load_data() -> void:
-	goods = _load_json(GOODS_PATH).get("goods", [])
+	goods = _as_dictionary_array(_load_json(GOODS_PATH).get("goods", []))
 	cities = _load_json(CITIES_PATH).get("cities", {})
 
 func get_goods() -> Array[Dictionary]:
@@ -50,3 +50,11 @@ func _load_json(path: String) -> Dictionary:
 	if parsed is Dictionary:
 		return parsed
 	return {}
+
+func _as_dictionary_array(value: Variant) -> Array[Dictionary]:
+	var output: Array[Dictionary] = []
+	if value is Array:
+		for item in value:
+			if item is Dictionary:
+				output.append(item)
+	return output

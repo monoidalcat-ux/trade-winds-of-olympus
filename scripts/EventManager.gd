@@ -15,7 +15,7 @@ func load_data() -> void:
 		return
 	var parsed = JSON.parse_string(file.get_as_text())
 	if parsed is Dictionary:
-		events = parsed.get("events", [])
+		events = _as_dictionary_array(parsed.get("events", []))
 	else:
 		events = []
 
@@ -27,3 +27,11 @@ func get_random_travel_event() -> Dictionary:
 	if travel_events.is_empty():
 		return {}
 	return travel_events[randi() % travel_events.size()]
+
+func _as_dictionary_array(value: Variant) -> Array[Dictionary]:
+	var output: Array[Dictionary] = []
+	if value is Array:
+		for item in value:
+			if item is Dictionary:
+				output.append(item)
+	return output
