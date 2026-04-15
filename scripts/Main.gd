@@ -1,12 +1,15 @@
 extends Control
 
+const DEFAULT_GOOD_ID := "olive_oil"
+const WELCOME_MESSAGE := "Welcome, captain."
+
 var city_data := CityData.new()
 var game_state := GameState.new()
 var event_manager := EventManager.new()
 
-var selected_good_id: String = "olive_oil"
-var selected_destination_id: String = "corinth"
-var status_message: String = "Welcome, captain."
+var selected_good_id: String = DEFAULT_GOOD_ID
+var selected_destination_id: String = ""
+var status_message: String = WELCOME_MESSAGE
 
 @onready var city_label: Label = $CityLabel
 @onready var money_label: Label = $MoneyLabel
@@ -79,14 +82,10 @@ func _get_prices_text() -> String:
 	return "\n".join(lines)
 
 func _on_buy_button_pressed() -> void:
-	var result := game_state.buy_good(selected_good_id, city_data)
-	status_message = result.get("message", "")
-	update_ui()
+	_apply_action_result(game_state.buy_good(selected_good_id, city_data))
 
 func _on_sell_button_pressed() -> void:
-	var result := game_state.sell_good(selected_good_id, city_data)
-	status_message = result.get("message", "")
-	update_ui()
+	_apply_action_result(game_state.sell_good(selected_good_id, city_data))
 
 func _on_travel_button_pressed() -> void:
 	if destination_dropdown.item_count == 0:
@@ -111,4 +110,8 @@ func _on_goods_dropdown_item_selected(index: int) -> void:
 func _on_destination_dropdown_item_selected(index: int) -> void:
 	selected_destination_id = destination_dropdown.get_item_metadata(index)
 	status_message = "Destination selected: %s" % city_data.get_city_name(selected_destination_id)
+	update_ui()
+
+func _apply_action_result(result: Dictionary) -> void:
+	status_message = result.get("message", "")
 	update_ui()
